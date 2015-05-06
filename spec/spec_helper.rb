@@ -5,8 +5,10 @@ require 'checkout'
 require 'copies'
 require 'patrons'
 require 'pg'
-require 'capybara'
+require 'capybara/rspec'
 require 'pry'
+require './app'
+
 
 DB = PG.connect({:dbname => 'library_test'})
 
@@ -21,3 +23,5 @@ RSpec.configure do |config|
     DB.exec("DELETE FROM patrons_copies *;")
   end
 end
+
+set(:show_exceptions, false)
