@@ -2,10 +2,18 @@ require 'spec_helper'
 
 describe(Author) do
 
-  describe('#author') do
+  describe('#name') do
     it('return the author') do
       author_test = Author.new({:name => 'Terry Pratchet', :id => nil})
       expect(author_test.name()).to(eq('Terry Pratchet'))
+    end
+  end
+
+  describe('#id') do
+    it('returns the id for a book') do
+      test_author = Author.new({:name => 'Orson S Card', :id => nil})
+      test_author.save()
+      expect(test_author.id()).to(be_an_instance_of(Fixnum))
     end
   end
 
