@@ -17,5 +17,5 @@ post('/book/new') do
   book = Book.new({:title => new_book, :id => nil})
   book.save()
   @books = Book.all()
-  erb(:index)
+  erb(:books)
 end

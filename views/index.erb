@@ -1,13 +1,6 @@
 <h1>Welcome to the Library</h1>
 <br>
-<h4>Books by Title</h4>
-<ul>
-  <% if @books.length() > 0 %>
-    <% @books.each() do |book| %>
-      <li><%= book.title() %></li>
-    <% end %>
-  <% end %>
-</ul>
+
 <div class="form-group">
   <form id="form_id" action="/book/new" method="post">
     <label for="book_title">Enter a book title</label>
