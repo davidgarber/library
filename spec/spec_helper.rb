@@ -1,7 +1,12 @@
 require 'rspec'
 require 'books'
+require 'authors'
+require 'checkout'
+require 'copies'
+require 'patrons'
 require 'pg'
 require 'capybara'
+require 'pry'
 
 DB = PG.connect({:dbname => 'library_test'})
 

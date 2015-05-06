@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'pry'
 
 describe(Book) do
   describe('#title') do
