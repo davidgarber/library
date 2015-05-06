@@ -7,23 +7,24 @@
   <link rel="stylesheet" type="text/css" href="/styles.css">
 </head>
 <body>
-  <div id="navbar">
-    <form action="/login" method="get">
+  <div id="navbar-div">
+    <form action="/login" method="get" id="navbar">
       <button class="btn btn-primary" type="submit" id="login">Login</button>
     </form>
-    <form action="/books" method="get">
+    <form action="/books" method="get" id="navbar">
       <button class="btn btn-primary" type="submit" id="books">Books</button>
     </form>
-    <form action="/authors" method="get">
+    <form action="/authors" method="get" id="navbar">
       <button class="btn btn-primary" type="submit" id="books">Authors</button>
     </form>
-    <form action="/add/author" method="get">
+    <form action="/add/author" method="get" id="navbar">
       <button class="btn btn-primary" type="submit" id="add_author">Add an Author</button>
     </form>
-    <form action="/add/book" method="get">
+    <form action="/add/book" method="get" id="navbar">
       <button class="btn btn-primary" type="submit" id="add_books">Add a Book</button>
     </form>
   </div>
+  <br>
   <div class="container">
     <%= yield %>
   </div>

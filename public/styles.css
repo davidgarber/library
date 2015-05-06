@@ -1,4 +1,16 @@
-#navbar div form button{
-  display: inline-block;
-  float:left;
+#navbar {
+  display: inline;
+  /*float: center;*/
+  /*margin-left: auto;
+  margin-right: auto;*/
+  /*width: 70%;*/
+}
+
+#navbar-div {
+  float: left;
+  display: block;
+  padding: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
