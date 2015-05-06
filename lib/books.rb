@@ -21,6 +21,8 @@ class Book
     self.title().==(another_title.title())
   end
 
+## add a method to escape apostrophes? ##
+
   define_method(:save) do
     result = DB.exec("INSERT INTO books (title) VALUES ('#{@title}') RETURNING id;")
     @id = result.first().fetch("id").to_i()

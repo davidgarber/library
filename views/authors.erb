@@ -1,0 +1,9 @@
+<h1>Authors</h1>
+
+<ul>
+  <% if @authors.length() > 0 %>
+  <% @authors.each() do |person| %>
+  <li><%= person.name() %></li>
+  <% end %>
+  <% end %>
+</ul>

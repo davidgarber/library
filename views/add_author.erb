@@ -1,0 +1,11 @@
+<div class="form-group">
+  <form id="form_id" action="/author/new" method="post">
+    <label for="new_author">Enter an Author</label>
+    <input required type="text" id="new_author" name="new_author" class="form-control">
+    <button type='submit' id="add_new_author" class="btn btn-primary">Submit Author</button>
+  </form>
+</div>
+
+<% unless @new_author == nil %>
+<h4><%= @new_author %> has been added.</h4>
+<% end %>
