@@ -9,6 +9,14 @@ describe(Book) do
     end
   end
 
+  describe('#id') do
+    it('returns the id for a book') do
+      test_book = Book.new({:title => 'To Kill a Mockingbird', :id => nil})
+      test_book.save()
+      expect(test_book.id()).to(be_an_instance_of(Fixnum))
+    end
+  end
+
   describe(".all") do
     it("starts off with no books") do
       expect(Book.all()).to(eq([]))
