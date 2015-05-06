@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'pry'
 
 describe(Book) do
   describe('#title') do
@@ -7,6 +8,27 @@ describe(Book) do
       expect(test_book.title()).to(eq('To Kill a Mockingbird'))
     end
   end
-  
+
+  describe(".all") do
+    it("starts off with no books") do
+      expect(Book.all()).to(eq([]))
+    end
+  end
+
+  describe('#save') do
+    it('adds a book to the database') do
+      test_book = Book.new({:title => 'To Kill a Mockingbird', :id => nil})
+      test_book.save()
+      expect(Book.all()).to(eq([test_book]))
+    end
+  end
+
+  describe("#==") do
+    it('is the same book if it has the same name') do
+      book1 = Book.new({:title => 'To Kill a Mockingbird', :id => nil})
+      book2 = Book.new({:title => 'To Kill a Mockingbird', :id => nil})
+      expect(book1).to(eq(book2))
+    end
+  end
 
 end
