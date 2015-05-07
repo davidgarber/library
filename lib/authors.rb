@@ -25,4 +25,32 @@ class Author
   define_method(:==) do |other_object|
     self.name().==(other_object.name())
   end
+
+  define_singleton_method(:find) do |id|
+    result = DB.exec("SELECT * FROM authors WHERE id = #{id};")
+    author = result.first().fetch("author")
+    Author.new({:name => author, :id => id})
+  end
+
+  define_method(:update) do |attributes|
+    @name = attributes.fetch(:name, @name)
+    @id = self.id()
+    DB.exec("UPDATE authors SET author = '#{@name}' WHERE id = #{@id}")
+
+    attributes.fetch(:book_ids, []).each() do |book_id|
+      DB.exec("INSERT INTO books_authors ( id_authors, id_books) VALUES (#{self.id()}, #{book_id});")
+    end
+  end
+
+  define_method(:books) do
+    book_authors = []
+    results = DB.exec("SELECT id_books FROM books_authors WHERE id_authors = #{self.id()};")
+    results.each() do |result|
+      id_book = result.fetch('id_books').to_i()
+      book = DB.exec("SELECT * FROM books WHERE id = #{id_book};")
+      title = book.first().fetch('title')
+      book_authors.push(Book.new({:title => title, :id => id_book}))
+    end
+    book_authors
+  end
 end
