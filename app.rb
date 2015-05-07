@@ -103,3 +103,21 @@ delete('/authors/:id') do
   @authors = Author.all()
   erb(:authors)
 end
+
+patch('/book/:id/checkout') do
+  @id = params.fetch('id').to_i()
+  @book = Book.find(@id)
+  @book.checkout()
+  @authors = Author.all()
+  @books_authors = @book.authors()
+  erb(:book)
+end
+
+patch('/book/:id/checkin') do
+  @id = params.fetch('id').to_i()
+  @book = Book.find(@id)
+  @book.checkin()
+  @authors = Author.all()
+  @books_authors = @book.authors()
+  erb(:book)
+end

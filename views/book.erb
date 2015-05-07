@@ -33,6 +33,19 @@
 
   <button type="submit">Delete book</button>
 </form>
+<form action="/book/<%= @id %>/checkout" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  <button type="submit">Checkout</button>
+
+</form>
+
+<form action="/book/<%= @id %>/checkin" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  <button type="submit">Checkin</button>
+
+</form>
 
 
 <% end %>
