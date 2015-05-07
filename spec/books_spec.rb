@@ -55,8 +55,6 @@ describe(Book) do
       book.update({:title => "The Lorax"})
       expect(book.title()).to(eq("The Lorax"))
     end
-  end
-
     it("lets you add an author to a book") do
       book = Book.new({:title => "For Whom the Bell Tolls", :id => nil})
       book.save()
