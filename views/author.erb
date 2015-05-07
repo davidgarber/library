@@ -22,7 +22,7 @@
   </div>
   <% end %>
 
-  <button type="submit">Add books</button>
+  <button type="submit" class="btn btn-primary">Add books</button>
 </form>
 <% end %>
 
@@ -30,5 +30,5 @@
 
 <form action="/authors/<%= @id %>" method="post">
   <input type="hidden" name="_method" value="delete">
-  <button id = "delete_author" type="submit">Delete</button>
+  <button id = "delete_author" type="submit" class="btn btn-danger">Delete</button>
 </form>

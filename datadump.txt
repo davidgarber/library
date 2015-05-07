@@ -135,8 +135,8 @@ ALTER SEQUENCE books_id_seq OWNED BY books.id;
 
 CREATE TABLE checkout (
     id integer NOT NULL,
-    date_out timestamp without time zone,
-    date_in timestamp without time zone
+    id_books integer,
+    check_status boolean
 );
 
 
@@ -318,10 +318,6 @@ ALTER TABLE ONLY patrons_copies ALTER COLUMN id SET DEFAULT nextval('patrons_cop
 --
 
 COPY authors (id, author) FROM stdin;
-1	Ernest Hemingway
-2	jdjd
-3	person
-4	different
 \.
 
 
@@ -329,7 +325,7 @@ COPY authors (id, author) FROM stdin;
 -- Name: authors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('authors_id_seq', 4, true);
+SELECT pg_catalog.setval('authors_id_seq', 6, true);
 
 
 --
@@ -337,21 +333,8 @@ SELECT pg_catalog.setval('authors_id_seq', 4, true);
 --
 
 COPY books (id, title) FROM stdin;
-1	To Kill a Mockingbird
-2
-3	asd
-4
-5
-6	asd
-7	Run, Rabbit
-8	Dantes Inferno
-9	Dantes Inferno
-10	Dantes Inferno
-11	Dantes Inferno
-12	adam
-13	dante
-14	Blink
-15	Blink
+19	Harry Potter
+20	For Whom the Bell Tolls
 \.
 
 
@@ -360,6 +343,8 @@ COPY books (id, title) FROM stdin;
 --
 
 COPY books_authors (id, id_books, id_authors) FROM stdin;
+12	18	1
+13	18	1
 \.
 
 
@@ -367,21 +352,23 @@ COPY books_authors (id, id_books, id_authors) FROM stdin;
 -- Name: books_authors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('books_authors_id_seq', 1, false);
+SELECT pg_catalog.setval('books_authors_id_seq', 15, true);
 
 
 --
 -- Name: books_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('books_id_seq', 15, true);
+SELECT pg_catalog.setval('books_id_seq', 20, true);
 
 
 --
 -- Data for Name: checkout; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
-COPY checkout (id, date_out, date_in) FROM stdin;
+COPY checkout (id, id_books, check_status) FROM stdin;
+2	20	f
+1	19	t
 \.
 
 
@@ -389,7 +376,7 @@ COPY checkout (id, date_out, date_in) FROM stdin;
 -- Name: checkout_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('checkout_id_seq', 1, false);
+SELECT pg_catalog.setval('checkout_id_seq', 2, true);
 
 
 --

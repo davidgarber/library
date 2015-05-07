@@ -9,6 +9,7 @@ DB = PG.connect({:dbname => 'library'})
 
 get('/') do
   @books = Book.all()
+  @authors = Author.all()
   erb(:index)
 end
 

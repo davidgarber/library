@@ -1,1 +1,21 @@
 <h1>Welcome to the Library</h1>
+
+<h3>Books</h3>
+
+<ul>
+  <% if @books.length() > 0 %>
+  <% @books.each() do |book| %>
+  <li><a href = "/book/<%= book.id() %>"><%= book.title() %></a>  -  <%= book.check_status() %></li>
+  <% end %>
+  <% end %>
+</ul>
+
+<h3>Authors</h3>
+
+<ul>
+  <% if @authors.length() > 0 %>
+  <% @authors.each() do |person| %>
+  <li><a id="<%= person.name() %>" href="/author/<%= person.id() %>"><%= person.name() %></a></li>
+  <% end %>
+  <% end %>
+</ul>
