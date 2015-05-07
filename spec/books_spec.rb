@@ -91,3 +91,14 @@ describe(Book) do
       expect(Book.all()).to(eq([book2]))
     end
   end
+
+  describe('#checkout') do
+    it("Will update a books status to checkout = true") do
+      book1 = Book.new({:title => "Oceans", :id => nil})
+      book1.save()
+      book1.book_log()
+      expect(book1.check_status()).to(eq('f'))
+      book1.checkout()
+      expect(book1.check_status()).to(eq('t'))
+    end
+  end

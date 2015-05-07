@@ -58,4 +58,26 @@ class Book
     DB.exec("DELETE FROM books WHERE id = #{self.id()};")
     DB.exec("DELETE FROM books_authors WHERE id_books = #{self.id()};")
   end
+
+  define_method(:book_log) do
+    @id = self.id()
+    DB.exec("INSERT INTO checkout (check_status, id_books) VALUES (false, #{@id});")
+  end
+
+  define_method(:check_status) do
+    @id = self.id().to_i()
+    status = DB.exec("SELECT * FROM checkout WHERE id_books = #{@id};")
+    status1 = status.first().fetch('check_status')
+
+    status1
+  end
+
+  define_method(:checkout) do
+    @id = self.id()
+    DB.exec("UPDATE checkout SET check_status = True WHERE id_books = #{@id};")
+  end
+  define_method(:checkin) do
+    @id = self.id()
+    DB.exec("UPDATE checkout SET check_status = False WHERE id_books = #{@id};")
+  end
 end
