@@ -1,3 +1,5 @@
+require('launchy')
+
 Capybara.app = Sinatra::Application
 
 describe('add a book', {:type => :feature}) do
@@ -26,8 +28,9 @@ describe('delete an author', {:type => :feature}) do
     click_button('add_author')
     fill_in('new_author', :with => "Ernest Hemingway")
     click_button('add_new_author')
+    click_button("authors")
     click_link("Ernest Hemingway")
     click_button("delete_author")
-    expect(page).to not_have_content("Ernest Hemingway")
+    expect(page).to_not have_content("Ernest Hemingway")
   end
 end
