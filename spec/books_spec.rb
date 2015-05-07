@@ -48,4 +48,13 @@ describe(Book) do
     end
   end
 
+  describe("#update") do
+    it("lets you update books in the database") do
+      book = Book.new({:title => "Green eggs and Ham", :id => nil})
+      book.save()
+      book.update({:title => "The Lorax"})
+      expect(book.title()).to(eq("The Lorax"))
+    end
+  end
+
 end
