@@ -10,10 +10,10 @@
 <% end %>
 <br>
 <h4>Add Books from the Library:</h4>
+
 <% if @authors.any?() %>
 <form action="/book/<%= @id %>" method="post">
   <input type="hidden" name="_method" value="patch">
-
   <% @authors.each() do |author| %>
   <div class="checkbox">
     <label>
@@ -21,31 +21,30 @@
     </label>
   </div>
   <% end %>
-
   <button type="submit">Add author</button>
+<% end %>
+
 </form>
-
 <h4>Remove this Book from the library</h4>
-
 <form action="/books/<%= @id %>" method="post">
   <input type="hidden" name="_method" value="delete">
-
-
   <button type="submit">Delete book</button>
 </form>
+
+<% if @book.check_status() == "Available" %>
+
+<h4>Check Out this Book</h4>
 <form action="/book/<%= @id %>/checkout" method="post">
   <input type="hidden" name="_method" value="patch">
-
-  <button type="submit">Checkout</button>
-
+  <button type="submit">Check out</button>
 </form>
 
+<% else %>
+
+<h4>Check In this Book</h4>
 <form action="/book/<%= @id %>/checkin" method="post">
   <input type="hidden" name="_method" value="patch">
-
-  <button type="submit">Checkin</button>
-
+  <button type="submit">Check in</button>
 </form>
-
 
 <% end %>
