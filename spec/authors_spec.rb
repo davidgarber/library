@@ -81,3 +81,14 @@ describe(Author) do
       expect(author.books()).to(eq([bell, jell]))
     end
   end
+
+  describe("#delete") do
+    it("lets you delete a author from the database") do
+      author1 = Author.new({:name => "Tolkien", :id => nil})
+      author1.save()
+      author2 = Author.new({:name => "Potter", :id => nil})
+      author2.save()
+      author1.delete()
+      expect(Author.all()).to(eq([author2]))
+    end
+  end

@@ -69,7 +69,7 @@ describe(Book) do
   end
 
   describe("#authors") do
-    it("returns all of the authors in a particular movie") do
+    it("returns all of the authors in a particular book") do
       book = Book.new({:title => "The Jell Bar", :id => nil})
       book.save()
       george = Author.new({:name => "George Clooney", :id => nil})
@@ -78,5 +78,16 @@ describe(Book) do
       brad.save()
       book.update({:author_ids => [george.id(), brad.id()]})
       expect(book.authors()).to(eq([george, brad]))
+    end
+  end
+
+  describe("#delete") do
+    it("lets you delete a book from the database") do
+      book1 = Book.new({:title => "Oceans", :id => nil})
+      book1.save()
+      book2 = Book.new({:title => "The life of Pi", :id => nil})
+      book2.save()
+      book1.delete()
+      expect(Book.all()).to(eq([book2]))
     end
   end

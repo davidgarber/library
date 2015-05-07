@@ -53,4 +53,9 @@ class Author
     end
     book_authors
   end
+
+  define_method(:delete) do
+    DB.exec("DELETE FROM authors WHERE id = #{self.id()};")
+    DB.exec("DELETE FROM books_authors WHERE id_authors = #{self.id()};")
+  end
 end
