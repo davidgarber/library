@@ -3,7 +3,7 @@
 <ul>
   <% if @authors.length() > 0 %>
     <% @authors.each() do |person| %>
-      <li><a href="/author/<%= person.id() %>"><%= person.name() %></a></li>
+      <li><a id="<%= person.name() %>" href="/author/<%= person.id() %>"><%= person.name() %></a></li>
     <% end %>
   <% end %>
 </ul>

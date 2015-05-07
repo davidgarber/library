@@ -19,3 +19,15 @@ describe('add an author', {:type => :feature}) do
     expect(page).to have_content("Ernest Hemingway")
   end
 end
+
+describe('delete an author', {:type => :feature}) do
+  it('allows the user to delete an author') do
+    visit('/')
+    click_button('add_author')
+    fill_in('new_author', :with => "Ernest Hemingway")
+    click_button('add_new_author')
+    click_link("Ernest Hemingway")
+    click_button("delete_author")
+    expect(page).to not_have_content("Ernest Hemingway")
+  end
+end

@@ -25,3 +25,12 @@
   <button type="submit">Add books</button>
 </form>
 <% end %>
+
+<h4>Delete this Author from the library:</h4>
+
+<form action="/authors/<%= @id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+
+  <button id = "delete_author" type="submit">Delete</button>
+
+</form>
