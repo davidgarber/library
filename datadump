@@ -10,14 +10,14 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner:
 --
 
 CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner:
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
@@ -30,7 +30,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: authors; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
+-- Name: authors; Type: TABLE; Schema: public; Owner: Guest; Tablespace:
 --
 
 CREATE TABLE authors (
@@ -63,7 +63,7 @@ ALTER SEQUENCE authors_id_seq OWNED BY authors.id;
 
 
 --
--- Name: books; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
+-- Name: books; Type: TABLE; Schema: public; Owner: Guest; Tablespace:
 --
 
 CREATE TABLE books (
@@ -75,7 +75,7 @@ CREATE TABLE books (
 ALTER TABLE books OWNER TO "Guest";
 
 --
--- Name: books_authors; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
+-- Name: books_authors; Type: TABLE; Schema: public; Owner: Guest; Tablespace:
 --
 
 CREATE TABLE books_authors (
@@ -130,7 +130,7 @@ ALTER SEQUENCE books_id_seq OWNED BY books.id;
 
 
 --
--- Name: checkout; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
+-- Name: checkout; Type: TABLE; Schema: public; Owner: Guest; Tablespace:
 --
 
 CREATE TABLE checkout (
@@ -164,7 +164,7 @@ ALTER SEQUENCE checkout_id_seq OWNED BY checkout.id;
 
 
 --
--- Name: copies; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
+-- Name: copies; Type: TABLE; Schema: public; Owner: Guest; Tablespace:
 --
 
 CREATE TABLE copies (
@@ -198,7 +198,7 @@ ALTER SEQUENCE copies_id_seq OWNED BY copies.id;
 
 
 --
--- Name: patrons; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
+-- Name: patrons; Type: TABLE; Schema: public; Owner: Guest; Tablespace:
 --
 
 CREATE TABLE patrons (
@@ -209,7 +209,7 @@ CREATE TABLE patrons (
 ALTER TABLE patrons OWNER TO "Guest";
 
 --
--- Name: patrons_copies; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
+-- Name: patrons_copies; Type: TABLE; Schema: public; Owner: Guest; Tablespace:
 --
 
 CREATE TABLE patrons_copies (
@@ -338,10 +338,10 @@ SELECT pg_catalog.setval('authors_id_seq', 4, true);
 
 COPY books (id, title) FROM stdin;
 1	To Kill a Mockingbird
-2	
+2
 3	asd
-4	
-5	
+4
+5
 6	asd
 7	Run, Rabbit
 8	Dantes Inferno
@@ -438,7 +438,7 @@ SELECT pg_catalog.setval('patrons_id_seq', 1, false);
 
 
 --
--- Name: authors_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
+-- Name: authors_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace:
 --
 
 ALTER TABLE ONLY authors
@@ -446,7 +446,7 @@ ALTER TABLE ONLY authors
 
 
 --
--- Name: books_authors_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
+-- Name: books_authors_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace:
 --
 
 ALTER TABLE ONLY books_authors
@@ -454,7 +454,7 @@ ALTER TABLE ONLY books_authors
 
 
 --
--- Name: books_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
+-- Name: books_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace:
 --
 
 ALTER TABLE ONLY books
@@ -462,7 +462,7 @@ ALTER TABLE ONLY books
 
 
 --
--- Name: checkout_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
+-- Name: checkout_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace:
 --
 
 ALTER TABLE ONLY checkout
@@ -470,7 +470,7 @@ ALTER TABLE ONLY checkout
 
 
 --
--- Name: copies_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
+-- Name: copies_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace:
 --
 
 ALTER TABLE ONLY copies
@@ -478,7 +478,7 @@ ALTER TABLE ONLY copies
 
 
 --
--- Name: patrons_copies_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
+-- Name: patrons_copies_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace:
 --
 
 ALTER TABLE ONLY patrons_copies
@@ -486,7 +486,7 @@ ALTER TABLE ONLY patrons_copies
 
 
 --
--- Name: patrons_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
+-- Name: patrons_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace:
 --
 
 ALTER TABLE ONLY patrons
@@ -506,4 +506,3 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 --
 -- PostgreSQL database dump complete
 --
-

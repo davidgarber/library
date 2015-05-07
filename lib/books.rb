@@ -27,4 +27,10 @@ class Book
     result = DB.exec("INSERT INTO books (title) VALUES ('#{@title}') RETURNING id;")
     @id = result.first().fetch("id").to_i()
   end
+
+  define_singleton_method(:find) do |id|
+    result = DB.exec("SELECT * FROM books WHERE id = #{id};")
+    title = result.first().fetch("title")
+    Book.new({:title => title, :id => id})
+  end
 end

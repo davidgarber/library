@@ -38,4 +38,14 @@ describe(Book) do
     end
   end
 
+  describe(".find") do
+    it("returns a book by its ID number") do
+      test_book1 = Book.new({:title => "Catcher in the Rye", :id => nil})
+      test_book1.save()
+      test_book2 = Book.new({:title => "War of the Worlds", :id => nil})
+      test_book2.save()
+      expect(Book.find(test_book2.id())).to(eq(test_book2))
+    end
+  end
+
 end

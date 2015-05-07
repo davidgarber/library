@@ -41,7 +41,14 @@ post('/author/new') do
   erb(:add_author)
 end
 
-  get('/authors') do
-    @authors = Author.all()
-    erb(:authors)
-  end
+get('/authors') do
+  @authors = Author.all()
+  erb(:authors)
+end
+
+get('/author/:id') do
+  @id = params.fetch('id')
+  author_object = DB.exec("SELECT * FROM authors WHERE id = #{@id};")
+  @author = author_object.first().fetch('author')
+  erb(:author)
+end

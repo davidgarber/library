@@ -2,8 +2,8 @@
 
 <ul>
   <% if @authors.length() > 0 %>
-  <% @authors.each() do |person| %>
-  <li><%= person.name() %></li>
-  <% end %>
+    <% @authors.each() do |person| %>
+      <li><a href="/author/<%= person.id() %>"><%= person.name() %></a></li>
+    <% end %>
   <% end %>
 </ul>
