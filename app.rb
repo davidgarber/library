@@ -47,8 +47,42 @@ get('/authors') do
 end
 
 get('/author/:id') do
-  @id = params.fetch('id')
-  author_object = DB.exec("SELECT * FROM authors WHERE id = #{@id};")
-  @author = author_object.first().fetch('author')
+  @id = params.fetch('id').to_i()
+  @author = Author.find(@id)
+  @authors_books = @author.books()
+  @books = Book.all()
   erb(:author)
+end
+
+patch('/author/:id') do
+  @id = params.fetch('id').to_i()
+  @author = Author.find(@id)
+  book_ids = params.fetch('book_ids')
+  @author.update({:book_ids => book_ids})
+  @books = Book.all()
+  @authors_books = @author.books()
+  erb(:author)
+end
+
+get('/books') do
+  @books = Book.all()
+  erb(:books)
+end
+
+get('/book/:id') do
+  @id = params.fetch('id').to_i()
+  @book = Book.find(@id)
+  @books_authors = @book.authors()
+  @authors = Author.all()
+  erb(:book)
+end
+
+patch('/book/:id') do
+  @id = params.fetch('id').to_i()
+  @book = Book.find(@id)
+  author_ids = params.fetch('author_ids')
+  @book.update({:author_ids => author_ids})
+  @authors = Author.all()
+  @books_authors = @book.authors()
+  erb(:book)
 end
