@@ -16,6 +16,7 @@ post('/book/new') do
   @new_book = params.fetch('book_title')
   book = Book.new({:title => @new_book, :id => nil})
   book.save()
+  book.book_log()
   @books = Book.all()
   erb(:add_new_book)
 end

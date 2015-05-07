@@ -68,8 +68,11 @@ class Book
     @id = self.id().to_i()
     status = DB.exec("SELECT * FROM checkout WHERE id_books = #{@id};")
     status1 = status.first().fetch('check_status')
-
-    status1
+    if status1 == "t"
+      return "Checked out"
+    else
+      return "Available"
+    end
   end
 
   define_method(:checkout) do

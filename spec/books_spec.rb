@@ -97,8 +97,8 @@ describe(Book) do
       book1 = Book.new({:title => "Oceans", :id => nil})
       book1.save()
       book1.book_log()
-      expect(book1.check_status()).to(eq('f'))
+      expect(book1.check_status()).to(eq('Available'))
       book1.checkout()
-      expect(book1.check_status()).to(eq('t'))
+      expect(book1.check_status()).to(eq('Checked out'))
     end
   end
