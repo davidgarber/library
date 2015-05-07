@@ -21,8 +21,6 @@ class Book
     self.title().==(another_title.title())
   end
 
-## add a method to escape apostrophes? ##
-
   define_method(:save) do
     result = DB.exec("INSERT INTO books (title) VALUES ('#{@title}') RETURNING id;")
     @id = result.first().fetch("id").to_i()
@@ -38,5 +36,21 @@ class Book
     @title = attributes.fetch(:title, @title)
     @id = self.id()
     DB.exec("UPDATE books SET title = '#{@title}' WHERE id = #{@id}")
+
+    attributes.fetch(:author_ids, []).each() do |author_id|
+      DB.exec("INSERT INTO books_authors (id_books, id_authors) VALUES (#{self.id()}, #{author_id});")
+    end
+  end
+
+  define_method(:authors) do
+    book_authors = []
+    results = DB.exec("SELECT id_authors FROM books_authors WHERE id_books = #{self.id()};")
+    results.each() do |result|
+      id_author = result.fetch('id_authors').to_i()
+      author = DB.exec("SELECT * FROM authors WHERE id = #{id_author};")
+      name = author.first().fetch('author')
+      book_authors.push(Author.new({:name => name, :id => id_author}))
+    end
+    book_authors
   end
 end
